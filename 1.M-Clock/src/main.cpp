@@ -39,8 +39,6 @@ void setup()
 }
 void loop()
 {
-  TIME Current_Time = NTPGetTime();
-
   Serial.print("Current time: ");
   Serial.print(Current_Time.year);
   Serial.print("/");

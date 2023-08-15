@@ -1,6 +1,9 @@
 #pragma once
 #include <Arduino.h>
 
+void NTP_Init();
+void NTPGetTime();
+
 typedef struct
 {
     uint16_t year;
@@ -10,5 +13,4 @@ typedef struct
     uint8_t minute;
     uint8_t second;
 } TIME;
-void NTP_Init();
-TIME NTPGetTime();
+extern TIME Current_Time;
