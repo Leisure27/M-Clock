@@ -1,40 +1,58 @@
-#include <TFT_eSPI.h>
-#include "KaiTi_26.h"
+#include <Arduino.h>
+#include "M_Config.h"
+#include <NTP.h>
 
-TFT_eSPI tft = TFT_eSPI(); // 创建TFT对象
+#ifdef ESP8266
+#include <ESP8266WiFi.h>
+#elif ESP32
+#include <WiFi.h>
+#endif
 
-#define BLK 5 // 亮度控制引脚
-void TFT_Init()
+void Connect_Wifi()
 {
-  tft.init();                // 初始化
-  tft.fillScreen(TFT_BLACK); // 设置屏幕背景颜色
-  analogWrite(BLK, 150);     // 调节屏幕亮度，0最亮，255最暗
-}
+  WiFi.hostname(DeviceName);
+  WiFi.mode(WIFI_STA);
+  WiFi.begin(ssid, password);
+  int flag = 0;
+  while (WiFi.status() != WL_CONNECTED)
+  {
+    delay(500);
+    flag++;
+    Serial.print(flag);
+    if (flag > 10)
+    {
+      ESP.restart(); //  重启
+    }
+  }
 
-void TFT_Display()
-{
-  tft.setTextColor(TFT_WHITE, TFT_BLACK); // 参数1：字体颜色，参数2：背景色
-
-  tft.setTextFont(2); // 字体大小16*16
-  tft.println("Hello,world");
-  tft.drawString("I want to eat something", 0, 50, 2);
-
-  tft.setTextFont(4); // 字体大小26*26
-  tft.drawNumber(1234, 0, 70);
-  tft.drawFloat(3.14159, 5, 0, 90);
-
-  // 自定义字库测试
-  tft.loadFont(KaiTi_26); // 加载自定义字体
-  tft.setCursor(0, 150);
-  tft.println("中文");
-  tft.drawString("汉字测试", 0, 177);
-  tft.unloadFont(); // 释放字库
+  Serial.println(F(""));
+  Serial.println(F("WiFi Connected!"));
+  Serial.print("IP:");
+  Serial.println(WiFi.localIP());
 }
 
 void setup()
 {
-  TFT_Init();
-  TFT_Display();
+  Serial.begin(115200);
+  // TFT_Init();
+  Connect_Wifi();
+  NTP_Init();
 }
+void loop()
+{
+  TIME Current_Time = NTPGetTime();
 
-void loop() {}
+  Serial.print("Current time: ");
+  Serial.print(Current_Time.year);
+  Serial.print("/");
+  Serial.print(Current_Time.month);
+  Serial.print("/");
+  Serial.print(Current_Time.day);
+  Serial.print(" ");
+  Serial.print(Current_Time.hour);
+  Serial.print(":");
+  Serial.print(Current_Time.minute);
+  Serial.print(":");
+  Serial.println(Current_Time.second);
+  delay(1000);
+}
