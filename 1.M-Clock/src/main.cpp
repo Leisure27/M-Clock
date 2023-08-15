@@ -34,7 +34,6 @@ void Connect_Wifi()
 void setup()
 {
   Serial.begin(115200);
-  // TFT_Init();
   Connect_Wifi();
   NTP_Init();
 }

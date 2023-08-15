@@ -18,9 +18,6 @@ typedef struct
     uint8_t minute;
     uint8_t second;
 } TIME;
-
-TIME Current_Time;
-
 // 启动NTP服务器
 void NTP_Init()
 {
@@ -32,7 +29,7 @@ TIME NTPGetTime()
 {
     timeClient.update(); // 更新NTP时间
 
-    unsigned long epochTime = timeClient.getEpochTime(); // 获取当前时间
+    uint64_t epochTime = timeClient.getEpochTime(); // 获取当前时间
     struct tm *currentTime = gmtime((time_t *)&epochTime);
     TIME Current_Time;                               // 创建一个结构体对象存储当前时间
     Current_Time.year = currentTime->tm_year + 1900; // 存储的是自 1900 年以来经过的年数，因此需要加上 1900 才能得到当前年份
