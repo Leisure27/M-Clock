@@ -37,8 +37,11 @@ void setup()
   Connect_Wifi();
   NTP_Init();
 }
-void loop()
+
+void NTP_Time()
 {
+  TIME Current_Time; // 结构体，存储当前NTP时间
+  Current_Time = NTPGetTime();
   Serial.print("Current time: ");
   Serial.print(Current_Time.year);
   Serial.print("/");
@@ -51,5 +54,8 @@ void loop()
   Serial.print(Current_Time.minute);
   Serial.print(":");
   Serial.println(Current_Time.second);
-  delay(1000);
+}
+void loop()
+{
+  NTP_Time();
 }
