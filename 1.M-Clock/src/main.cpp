@@ -4,6 +4,7 @@
 #include <NTP.h>
 #include <string.h>
 #include "KaiTI_30.h" // 自定义字体
+#include "HeFengAPI.h"
 
 #ifdef ESP8266
 #include <ESP8266WiFi.h>
@@ -120,7 +121,7 @@ void NTP_Time()
   // 显示日期
   clk.createSprite(120, 32);   // 创建一个画布，画布大小x*y
   clk.fillSprite(TFT_BLACK);   // 画布颜色
-  clk.setTextColor(TFT_WHITE);    // 字体颜色
+  clk.setTextColor(TFT_WHITE); // 字体颜色
   clk.loadFont(KaiTI_30);      // 加载字体
   clk.setTextDatum(TL_DATUM);  // 设置文本显示基准：左上对齐(默认对齐方式)
   clk.print(Current_Time.month);
@@ -148,9 +149,13 @@ void setup()
   TFT_Init();
   Connect_Wifi();
   NTP_Init();
+  // String line = HTTPS_request(host, url, parameter);
+  // Serial.println(line);
 }
 
 void loop()
 {
   NTP_Time();
+  // qweather();
+  // delay(5000);
 }

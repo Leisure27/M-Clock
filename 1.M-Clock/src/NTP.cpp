@@ -1,23 +1,13 @@
 /*
  * NTP授时
  */
-#include <Arduino.h>
+#include "NTP.h"
 #include <WiFiUdp.h>
 #include <NTPClient.h>
 
 const long utcOffsetInSeconds = 28800; // 时区偏移量（以秒为单位），3600*8，偏移8个小时
 WiFiUDP ntpUDP;
 NTPClient timeClient(ntpUDP, "pool.ntp.org", utcOffsetInSeconds);
-
-typedef struct
-{
-    uint16_t year;
-    uint8_t month;
-    uint8_t day;
-    uint8_t hour;
-    uint8_t minute;
-    uint8_t second;
-} TIME;
 
 // 启动NTP服务器
 void NTP_Init()
