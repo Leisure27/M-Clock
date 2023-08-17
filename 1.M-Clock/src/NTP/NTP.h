@@ -12,4 +12,4 @@ typedef struct
 } TIME;
 
 void NTP_Init();
-TIME NTPGetTime();
+TIME NTPGetTime(); // 函数返回值为一个结构体

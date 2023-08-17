@@ -1,11 +1,11 @@
 #include <Arduino.h>
 #include <TFT_eSPI.h>
 #include "M_Config.h"
-#include <NTP.h>
+#include "NTP/NTP.h"
 #include <string.h>
 #include "KaiTI_30.h" // 自定义字体
-#include "HeFengAPI.h"
-#include "XinZhiAPI.h"
+#include "HeFeng/HeFengAPI.h"
+#include "XinZhi/XinZhiAPI.h"
 
 #ifdef ESP8266
 #include <ESP8266WiFi.h>

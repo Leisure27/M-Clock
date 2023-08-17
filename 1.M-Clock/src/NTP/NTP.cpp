@@ -1,7 +1,7 @@
 /*
  * NTP授时
  */
-#include "NTP.h"
+#include "NTP/NTP.h"
 #include <WiFiUdp.h>
 #include <NTPClient.h>
 

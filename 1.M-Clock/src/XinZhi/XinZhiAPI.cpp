@@ -2,6 +2,7 @@
  * 功能：心知天气API请求
  */
 #include <ESP8266WiFi.h>
+#include "XinZhi/XinZhiAPI.h"
 
 const char *host = "api.seniverse.com"; // 将要连接的服务器地址
 const int httpPort = 80;                // 将要连接的服务器端口
