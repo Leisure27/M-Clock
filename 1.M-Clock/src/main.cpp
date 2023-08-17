@@ -5,6 +5,7 @@
 #include <string.h>
 #include "KaiTI_30.h" // 自定义字体
 #include "HeFengAPI.h"
+#include "XinZhiAPI.h"
 
 #ifdef ESP8266
 #include <ESP8266WiFi.h>
@@ -149,13 +150,9 @@ void setup()
   TFT_Init();
   Connect_Wifi();
   NTP_Init();
-  // String line = HTTPS_request(host, url, parameter);
-  // Serial.println(line);
 }
 
 void loop()
 {
   NTP_Time();
-  // qweather();
-  // delay(5000);
 }

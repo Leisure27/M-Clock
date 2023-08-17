@@ -1,5 +1,6 @@
 /*
- *   通过和风天气API获取天气信息
+ * 功能：通过和风天气API获取天气信息
+ * 问题1：返回的JSON数据是Gzip压缩过的，暂未找到合适的解压方法
  */
 #include <Arduino.h>
 #include <ESP8266HTTPClient.h>
