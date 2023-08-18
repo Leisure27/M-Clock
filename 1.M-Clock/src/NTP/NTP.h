@@ -12,4 +12,4 @@ typedef struct
 } TIME;
 
 void NTP_Init();
-TIME NTPGetTime(); // 函数返回值为一个结构体
+void GetCurrentTime(TIME &time); // 通过NTP服务器获取当前时间

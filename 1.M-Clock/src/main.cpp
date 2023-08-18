@@ -25,6 +25,7 @@ TFT_eSprite clk = TFT_eSprite(&tft);
 /*函数声明区*/
 String num2str(uint16_t num);
 uint8_t Zeller_Week();
+void Update_Current_Time();
 
 /*自定义函数区*/
 void Connect_Wifi()
@@ -102,11 +103,8 @@ uint8_t Zeller_Week()
   return w;
 }
 
-void NTP_Time()
+void Display_NTP_Time()
 {
-
-  Current_Time = NTPGetTime();
-
   clk.setColorDepth(8);
 
   // 显示当前时间
@@ -145,18 +143,24 @@ void NTP_Time()
   clk.deleteSprite();     // 删除画布
 }
 
+void Update_Current_Time()
+{
+  GetCurrentTime(Current_Time);
+  Display_NTP_Time();
+}
+
 void setup()
 {
   Serial.begin(115200);
   TFT_Init();
   Connect_Wifi();
   NTP_Init();
-
 }
 
 void loop()
 {
-  NTP_Time();
+  // NTP_Time();
+  Update_Current_Time();
   // XinZhi_test();
   // delay(3000);
 }

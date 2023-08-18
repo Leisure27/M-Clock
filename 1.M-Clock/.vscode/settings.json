@@ -8,5 +8,5 @@
         "string": "cpp",
         "string_view": "cpp"
     },
-    "cmake.sourceDirectory": "F:/5--github仓库/M-Clock/1.M-Clock/lib/TFT_eSPI"
+    "cmake.sourceDirectory": "G:/14--github仓库/4.M-Clock/1.M-Clock/lib/TFT_eSPI"
 }

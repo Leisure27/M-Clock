@@ -21,8 +21,8 @@ String URL()
     return reqRes;
 }
 
-// 向心知天气服务器服务器请求信息并对信息进行解析
-void httpRequest()
+// 向心知天气服务器服务器请求信息
+void WeatherNow()
 {
     WiFiClient client;
     // 建立http请求信息
