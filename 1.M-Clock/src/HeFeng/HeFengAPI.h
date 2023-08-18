@@ -1,2 +1,2 @@
 #pragma once
-void qweather();
+void HeFeng_test();

@@ -10,10 +10,10 @@ String location = "101200101";                   // 城市ID，武汉市
 String key = "9a15fc50a5414cb4b1615d49d390030a"; // 个人私钥
 
 // 请求实时天气信息
-void qweather()
+void HeFeng_test()
 {
     std::unique_ptr<BearSSL::WiFiClientSecure> client(new BearSSL::WiFiClientSecure);
-    client->setInsecure();
+    client->setInsecure(); // 不进行服务器身份认证
     HTTPClient https;
 
     String URL = "https://devapi.qweather.com/v7/weather/now?location=" + location + "&key=" + key + "&gzip=n";

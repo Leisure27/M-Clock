@@ -35,11 +35,12 @@ void Connect_Wifi()
   int flag = 0;
   while (WiFi.status() != WL_CONNECTED)
   {
-    delay(500);
+    delay(1000);
     flag++;
     Serial.print(flag);
     if (flag > 10)
     {
+      Serial.println("WiFi Connection Failed");
       ESP.restart(); //  重启
     }
   }
@@ -150,9 +151,12 @@ void setup()
   TFT_Init();
   Connect_Wifi();
   NTP_Init();
+
 }
 
 void loop()
 {
   NTP_Time();
+  // XinZhi_test();
+  // delay(3000);
 }
