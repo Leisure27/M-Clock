@@ -27,6 +27,7 @@ void Connect_Wifi()
   int flag = 0;
   while (WiFi.status() != WL_CONNECTED)
   {
+    Loading();
     delay(1000);
     flag++;
     Serial.print(flag);

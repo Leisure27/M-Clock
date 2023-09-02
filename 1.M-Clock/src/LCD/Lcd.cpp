@@ -71,7 +71,7 @@ void Display_NTP_Time()
     // 显示当前时间
     clk.createSprite(220, 48);   // 创建一个画布，画布大小x*y
     clk.fillSprite(TFT_BLACK);   // 画布颜色
-    clk.setTextColor(TFT_WHITE); // 字体颜色
+    clk.setTextColor(TFT_GREEN); // 字体颜色
     clk.setTextFont(7);          // 字体类型Font 7，字体大小：48*48
     clk.setTextDatum(TL_DATUM);  // 设置文本显示基准：左上对齐(默认对齐方式)
     clk.drawString(Time_str(), 0, 0);
@@ -108,4 +108,18 @@ void Update_Current_Time()
 {
     GetCurrentTime(Current_Time);
     Display_NTP_Time();
+}
+
+void Loading()
+{
+    clk.setColorDepth(8);
+    clk.createSprite(220, 48);   // 创建一个画布，画布大小x*y
+    clk.fillSprite(TFT_BLACK);   // 画布颜色
+    clk.setTextColor(TFT_WHITE); // 字体颜色
+    clk.setTextFont(4);          
+    clk.setTextDatum(TL_DATUM);  // 设置文本显示基准：左上对齐(默认对齐方式)
+    clk.drawString("WiFi Connecting....", 0, 0);
+    clk.pushSprite(2, 38); // 把画布推送到屏幕的(x,y)位置进行显示
+    clk.unloadFont();       // 卸载字体
+    clk.deleteSprite();     // 删除画布
 }
